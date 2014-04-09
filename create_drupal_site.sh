@@ -51,24 +51,23 @@ drush site-install compro --db-url=mysql://$SQLNAME:$PASS@localhost/$NAME --acco
 # Setup apache vhost.
 APACHE=/etc/apache2/sites-available
 sudo touch $APACHE/$NAME
-echo Wrote the following to $APACHE/$NAME
-echo "<VirtualHost *:80>" | sudo tee -a $APACHE/$NAME
-echo "        ServerName "$NAME.dev | sudo tee -a $APACHE/$NAME
-echo "        ServerAlias *."$NAME.dev | sudo tee -a $APACHE/$NAME
-echo "        DirectoryIndex index.php index.html" | sudo tee -a $APACHE/$NAME
-echo "        DocumentRoot /home/"$USER"/htdocs/"$NAME | sudo tee -a $APACHE/$NAME
-echo "        <Directory /home/"$USER"/htdocs/"$NAME">" | sudo tee -a $APACHE/$NAME
-echo "                Options -Indexes FollowSymLinks" | sudo tee -a $APACHE/$NAME
-echo "                AllowOverride All" | sudo tee -a $APACHE/$NAME
-echo "                Order allow,deny" | sudo tee -a $APACHE/$NAME
-echo "                allow from all" | sudo tee -a $APACHE/$NAME
-echo "        </Directory>" | sudo tee -a $APACHE/$NAME
-echo "        ErrorLog /var/log/apache2/"$NAME.dev_error.log | sudo tee -a $APACHE/$NAME
-echo "        CustomLog /var/log/apache2/"$NAME.dev_access.log combined | sudo tee -a $APACHE/$NAME
-echo "</VirtualHost>" | sudo tee -a $APACHE/$NAME
+echo Wrote the following to $APACHE/$NAME.conf
+echo "<VirtualHost *:80>" | sudo tee -a $APACHE/$NAME.conf
+echo "        ServerName "$NAME.dev | sudo tee -a $APACHE/$NAME.conf
+echo "        ServerAlias *."$NAME.dev | sudo tee -a $APACHE/$NAME.conf
+echo "        DirectoryIndex index.php index.html" | sudo tee -a $APACHE/$NAME.conf
+echo "        DocumentRoot /home/"$USER"/htdocs/"$NAME | sudo tee -a $APACHE/$NAME.conf
+echo "        <Directory /home/"$USER"/htdocs/"$NAME">" | sudo tee -a $APACHE/$NAME.conf
+echo "                Options Indexes FollowSymLinks" | sudo tee -a $APACHE/$NAME.conf
+echo "                AllowOverride All" | sudo tee -a $APACHE/$NAME.conf
+echo "                Require all granted" | sudo tee -a $APACHE/$NAME.conf
+echo "        </Directory>" | sudo tee -a $APACHE/$NAME.conf
+echo "        ErrorLog /var/log/apache2/"$NAME.local_error.log | sudo tee -a $APACHE/$NAME.conf
+echo "        CustomLog /var/log/apache2/"$NAME.local_access.log combined | sudo tee -a $APACHE/$NAME.conf
+echo "</VirtualHost>" | sudo tee -a $APACHE/$NAME.conf
 
 echo Activating site...
-sudo a2ensite $NAME
+sudo a2ensite $NAME.conf
 echo Done.
 
 echo Restarting apache2...

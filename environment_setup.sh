@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script is intended to take a fresh install of Ubuntu 12.04 and prepare
+# Script is intended to take a fresh install of Ubuntu and prepare
 # it for local Drupal development.
 
 # Update apt.
