@@ -1,8 +1,9 @@
 Drupal Starter Kit
 =====================
 
-Drupal Starter Kit is a collection of scripts to aid in local Drupal development on Ubuntu 12.04.  These scripts
-have only been tested on a clean 32-bit Ubuntu 12.04 install.  Please use at your own risk.
+Drupal Starter Kit is a collection of scripts to aid in local Drupal development on Ubuntu.
+If you version of Ubuntu ships with Apache 2.4, please use the apach24 branch.
+
 
 Contents
 ====================
